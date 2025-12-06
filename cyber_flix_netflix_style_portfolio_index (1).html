@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberFlix | Tanishka Mali – Security Portfolio</title>
+  <meta name="description" content="Tanishka Mali – Cybersecurity portfolio. Threat analysis, reverse engineering, CTFs, and secure software projects." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23E50914'/><text x='50' y='58' font-size='56' text-anchor='middle' fill='white' font-family='Arial'>C</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { inter: ["Inter", "ui-sans-serif", "system-ui"] },
+          colors: {
+            primary: { 500: '#E50914', 600: '#B2070F' },
+            secondary: { 500: '#141414', 600: '#0F0F0F' }
+          },
+          boxShadow: { glow: '0 0 0 1px rgba(229,9,20,.35), 0 12px 24px -8px rgba(0,0,0,.7)' }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    html, body { scroll-behavior: smooth; }
+    .row-scroll { display: grid; grid-auto-flow: column; grid-auto-columns: 18rem; gap: 1rem; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; padding-bottom: .5rem; }
+    .row-scroll > * { scroll-snap-align: start; }
+    .card-zoom { transform: translateY(0) scale(1); transition: transform .25s ease, box-shadow .25s ease; }
+    .card-zoom:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 30px -12px rgba(0,0,0,.6); }
+    .glass { background: linear-gradient(180deg, rgba(20,20,20,.2), rgba(20,20,20,.5)); backdrop-filter: blur(6px); }
+  </style>
+</head>
+<body class="bg-secondary-500 text-gray-100 min-h-screen font-inter">
+  <custom-navbar></custom-navbar>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+    <!-- Hero -->
+    <section class="relative h-[26rem] md:h-[30rem] rounded-2xl overflow-hidden shadow-glow">
+      <!-- Updated hero image to generic placeholder for easier customization. Replace this URL with a real photo if desired. -->
+      <img src="./me.jpeg"
+      alt="Tanishka Mali"
+      class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-secondary-500 via-black/40 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+        <div class="max-w-3xl">
+          <!-- Updated hero headline and description to better capture current interests and achievements -->
+          <h1 class="text-4xl md:text-5xl font-black leading-tight">Tanishka Ganesh Mali</h1>
+          <p class="text-lg md:text-xl text-gray-300 mt-3">I’m a security engineer crafting my master’s journey in cybersecurity, analytics, and operations. Competitive cyber games are where I come alive. Over 10 CTFs later, I’ve built, broken, defended, and explored. This website is my portfolio of everything I’m proud to share. I hope you enjoy the ride.</p>
+          <div class="flex flex-wrap items-center gap-3 mt-6">
+            <a href="#projects" class="bg-primary-500 hover:bg-primary-600 px-6 py-3 rounded-md font-semibold">View Projects</a>
+            <a href="#contact" class="bg-white/10 hover:bg-white/20 px-6 py-3 rounded-md font-semibold">Contact Me</a>
+            <a href="#resume" class="inline-flex items-center gap-2 text-gray-200 hover:text-white"><i data-feather="download" class="w-5 h-5"></i> Resume </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Pills -->
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold mb-4">Explore My Work</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        <a href="#projects" class="card-zoom bg-secondary-600 rounded-xl p-4 h-36 flex items-center justify-center hover:ring-2 ring-primary-500"><div class="text-center"><i data-feather="code" class="w-8 h-8 mx-auto mb-2"></i><h3>Projects</h3></div></a>
+        <a href="#education" class="card-zoom bg-secondary-600 rounded-xl p-4 h-36 flex items-center justify-center hover:ring-2 ring-primary-500"><div class="text-center"><i data-feather="book" class="w-8 h-8 mx-auto mb-2"></i><h3>Education</h3></div></a>
+        <a href="#experience" class="card-zoom bg-secondary-600 rounded-xl p-4 h-36 flex items-center justify-center hover:ring-2 ring-primary-500"><div class="text-center"><i data-feather="briefcase" class="w-8 h-8 mx-auto mb-2"></i><h3>Experience</h3></div></a>
+        <a href="#competitions" class="card-zoom bg-secondary-600 rounded-xl p-4 h-36 flex items-center justify-center hover:ring-2 ring-primary-500"><div class="text-center"><i data-feather="award" class="w-8 h-8 mx-auto mb-2"></i><h3>CTFs</h3></div></a>
+        <a href="#papers" class="card-zoom bg-secondary-600 rounded-xl p-4 h-36 flex items-center justify-center hover:ring-2 ring-primary-500"><div class="text-center"><i data-feather="file-text" class="w-8 h-8 mx-auto mb-2"></i><h3>Papers</h3></div></a>
+        <a href="#certifications" class="card-zoom bg-secondary-600 rounded-xl p-4 h-36 flex items-center justify-center hover:ring-2 ring-primary-500"><div class="text-center"><i data-feather="shield" class="w-8 h-8 mx-auto mb-2"></i><h3>Certs</h3></div></a>
+      </div>
+    </section>
+
+    <!-- Featured Rows -->
+    <section id="projects" class="mt-12 space-y-8">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-bold">Featured Projects</h2>
+      </div>
+      <div class="row-scroll">
+        <article class="relative bg-secondary-600 rounded-xl overflow-hidden card-zoom">
+          <a href="https://github.com/tanishkamali14/Ransomware-Detection" target="_blank">
+            <!-- Placeholder image; swap this with a relevant photo hosted online if available -->
+            <img class="h-40 w-full object-cover" src="./ransom_ml.png" alt="Ransomware ML Detection" />
+            <div class="p-4"><h3 class="font-bold text-lg">Ransomware Detection (ML)</h3><p class="text-sm text-gray-300">Machine‑learning based ransomware behavior detection system.</p></div>
+          </a>
+        </article>
+        <article class="relative bg-secondary-600 rounded-xl overflow-hidden card-zoom">
+          <a href="https://github.com/png270/iot-mitre-threat-mapping" target="_blank">
+            <!-- Placeholder image for IoT MITRE Threat Mapping -->
+            <img class="h-40 w-full object-cover" src="./IOT.jpg" alt="IoT MITRE Threat Mapping" />
+            <div class="p-4"><h3 class="font-bold text-lg">IoT MITRE Threat Mapping</h3><p class="text-sm text-gray-300">Threat‑mapping engine aligning IoT attacks with MITRE ATT&CK.</p></div>
+          </a>
+        </article>
+        <article class="relative bg-secondary-600 rounded-xl overflow-hidden card-zoom">
+          <a href="https://github.com/tanishkamali14/cyberprobe" target="_blank">
+            <!-- Placeholder image for CyberProbe Recon Framework -->
+            <img class="h-40 w-full object-cover" src="./Pentest.avif" alt="CyberProbe Pentesting Framework" />
+            <div class="p-4"><h3 class="font-bold text-lg">CyberProbe – Recon Framework</h3><p class="text-sm text-gray-300">Automated multi‑tool reconnaissance & scanning orchestration.</p></div>
+          </a>
+        </article>
+        <article class="relative bg-secondary-600 rounded-xl overflow-hidden card-zoom">
+          <a href="https://github.com/code-glyph/container-security-pipeline/tree/main" target="_blank">
+            <!-- Placeholder image for Container Security Pipeline -->
+            <img class="h-40 w-full object-cover" src="./gcp.png" alt="GCP Binary Authorization Pipeline" />
+            <div class="p-4"><h3 class="font-bold text-lg">Container Security Pipeline</h3><p class="text-sm text-gray-300">End‑to‑end supply chain pipeline with signing, attestation, and enforcement.</p></div>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="mt-16">
+      <h2 class="text-2xl font-bold mb-6">Education</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-secondary-600 rounded-xl p-5 glass">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h3 class="text-xl font-bold">Pennsylvania State University</h3>
+              <p class="text-gray-400">M.S. Cybersecurity Analytics & Operations • Aug 2024 – May 2026</p>
+              <p class="text-gray-300 mt-2">GPA: 3.98 • Focus: Reverse Engineering, Risk & Incident Response.</p>
+            </div>
+            <div class="bg-primary-500/90 rounded-full p-2"><i data-feather="book-open" class="w-5 h-5"></i></div>
+          </div>
+        </div>
+        <div class="bg-secondary-600 rounded-xl p-5 glass">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h3 class="text-xl font-bold">Savitribai Phule Pune University</h3>
+              <p class="text-gray-400">B.E. Computer Engineering • Sept 2021 – May 2024</p>
+              <p class="text-gray-300 mt-2">GPA: 3.56 • Emphasis: Systems & Security.</p>
+            </div>
+            <div class="bg-primary-500/90 rounded-full p-2"><i data-feather="book-open" class="w-5 h-5"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="mt-16">
+      <h2 class="text-2xl font-bold mb-6">Experience</h2>
+      <div class="space-y-4">
+        <div class="bg-secondary-600 rounded-xl p-5">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="text-xl font-bold">Teaching Assistant – Cyber 366 & SRA 433</h3>
+              <p class="text-gray-400">Penn State College of IST • Aug 2024 – Present</p>
+            </div>
+            <div class="bg-primary-500/90 rounded-full p-2"><i data-feather="shield" class="w-5 h-5"></i></div>
+          </div>
+          <ul class="mt-4 space-y-2 list-disc list-inside text-gray-300">
+            <li>Delivered malware analysis & reverse engineering labs with Ghidra/IDA Pro; supported C/assembly review.</li>
+            <li>Guided deception theory & counter‑deception techniques; taught analytic methods incl. trace clustering.</li>
+          </ul>
+        </div>
+        <div class="bg-secondary-600 rounded-xl p-5">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="text-xl font-bold">Vulnerability Management Intern</h3>
+              <p class="text-gray-400">Balbird Industries • Jun 2023 – Dec 2023</p>
+            </div>
+            <div class="bg-primary-500/90 rounded-full p-2"><i data-feather="activity" class="w-5 h-5"></i></div>
+          </div>
+          <ul class="mt-4 space-y-2 list-disc list-inside text-gray-300">
+            <li>Ran ERP assessments with Nessus/OpenVAS/OWASP ZAP; fixed DOM‑XSS via input validation & CSP.</li>
+            <li>Built lockout + pilot 2FA; thresholds on failed logins with cooldown; improved auth resilience.</li>
+          </ul>
+        </div>
+        <div class="bg-secondary-600 rounded-xl p-5">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="text-xl font-bold">Software Developer Intern</h3>
+              <p class="text-gray-400">Keenhour (99 Digital) • Feb 2023 – May 2023</p>
+            </div>
+            <div class="bg-primary-500/90 rounded-full p-2"><i data-feather="cpu" class="w-5 h-5"></i></div>
+          </div>
+          <ul class="mt-4 space-y-2 list-disc list-inside text-gray-300">
+            <li>Boosted load speed 40% via code‑splitting & lazy loading (Webpack/React.lazy).</li>
+            <li>Hardened reliability with Axios retries/backoff; triaged downtime by ELK analysis and caching.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTFs -->
+    <section id="competitions" class="mt-16">
+      <h2 class="text-2xl font-bold mb-6">Competitions & CTFs</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">Raymond James CTF 2024</h3><p class="text-gray-400">Best Team Spirit • 8th Place</p></div>
+        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">Internal Penn State CTF</h3><p class="text-gray-400">1st Place</p></div>
+        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">CyberFire – U.S. Dept. of Energy</h3><p class="text-gray-400">2nd Place</p></div>
+        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">UND CyberHawks National CTF 2025</h3><p class="text-gray-400">Team Captain</p></div>
+        <!-- Linked card for DASSH Homeland Security Challenge with competition report -->
+        <a href="https://github.com/tanishkamali14/DASSH-Homeland-Security-Design-Challenge" target="_blank" rel="noopener" class="bg-secondary-600 rounded-xl p-5 hover:ring-2 ring-primary-500 block">
+          <h3 class="text-xl font-bold">DASSH Homeland Security Challenge</h3>
+          <p class="text-gray-400">AI‑Driven Log Analysis (competition report)</p>
+        </a>
+        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">Mountain West Cyber Challenge 2024</h3><p class="text-gray-400">4th Place</p></div>
+        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">iCTF – International CTF 2024</h3><p class="text-gray-400">Global Competition</p></div>
+        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">CyberSEED 2025</h3><p class="text-gray-400">Cybersecurity Games by UConn</p></div>
+        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">PicoCTF 2025 – CMU</h3><p class="text-gray-400">Binary, Web, Crypto Challenges</p></div>
+        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">CTF@CIT 2025</h3><p class="text-gray-400">Offensive Security Scenarios</p></div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" class="mt-16">
+      <h2 class="text-2xl font-bold mb-6">Certifications</h2>
+      <div class="bg-secondary-600 rounded-xl p-5">
+        <div class="flex items-center gap-3">
+          <i data-feather="shield" class="w-5 h-5"></i>
+          <span class="font-semibold">CompTIA Security+ (SY0‑701)</span>
+          <a class="text-primary-500 hover:underline text-sm" href="https://www.comptia.org/certifications/security" target="_blank" rel="noopener">About</a>
+          <a class="text-primary-500 hover:underline text-sm" href="https://www.credly.com/badges/e33177d6-812c-4baa-b8e0-dfae7228d7ff/linked_in?t=t39k9l" target="_blank" rel="noopener">Badge</a>
+        </div>
+        <p class="text-gray-300 mt-2">Threats, risk, IR, cryptography, secure architectures, IAM, and compliance frameworks.</p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="mt-16">
+      <h2 class="text-2xl font-bold mb-6">Technical Skills</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <ul class="bg-secondary-600 rounded-xl p-5 space-y-2 text-gray-300">
+          <li><strong>Security</strong>: Threat Intel, IR/DFIR (Splunk, ELK, Wireshark, Autopsy, Volatility), Network Analysis, Vulnerability Mgmt (Nessus, OpenVAS, ZAP), IAM (SSO/MFA), Crypto, Supply‑Chain (Binary Authorization, KMS, Attestations), MITRE ATT&CK, OWASP Top 10.</li>
+          <li><strong>AI/ML</strong>: Prompt Eng, NLP, LLMs, data analytics.</li>
+        </ul>
+        <ul class="bg-secondary-600 rounded-xl p-5 space-y-2 text-gray-300">
+          <li><strong>Platforms</strong>: Linux, Windows, Docker, Kubernetes, AWS, Azure, GCP, Jenkins.</li>
+          <li><strong>Languages</strong>: Python, C/C++, SQL, Java, Assembly, JavaScript.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Papers & Writing -->
+    <section id="papers" class="mt-16">
+      <h2 class="text-2xl font-bold mb-6">Papers & Writing</h2>
+      <div class="bg-secondary-600 rounded-xl p-5 space-y-3">
+        <p class="text-gray-300">Explore my research &amp; writing:</p>
+        <ul class="list-disc list-inside text-primary-500 text-sm space-y-1">
+          <li><a class="hover:underline" href="https://ijsrem.com/download/cyberprobe-a-framework-for-assessing-system-security/" target="_blank" rel="noopener">CyberProbe: A Framework for Assessing System Security (journal paper)</a></li>
+          <li><a class="hover:underline" href="https://medium.com/@tanishkamali14/the-quantum-leap-transformation-of-cybersecurity-in-the-age-of-quantum-computers-f895ba49d5be" target="_blank" rel="noopener">The Quantum Leap: Transformation of Cybersecurity in the Age of Quantum Computers (blog post)</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mt-16">
+      <h2 class="text-2xl font-bold mb-6">Get in Touch</h2>
+      <div class="bg-secondary-600 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div class="space-y-1">
+          <p class="text-lg font-semibold">Tanishka Ganesh Mali</p>
+          <p class="text-gray-300">Graduate Researcher • Security Engineer</p>
+          <!-- Added location and phone details -->
+          <p class="text-gray-300">State College, PA</p>
+          <p class="text-gray-300">+1 (814) 280‑6430</p>
+        </div>
+        <div class="flex flex-wrap gap-3 items-center">
+          <a class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-md" href="mailto:tanishkamali114@gmail.com"><i data-feather="mail" class="w-4 h-4"></i> Email</a>
+          <a class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-md" href="https://www.linkedin.com/in/tanishkamali/" target="_blank" rel="noopener"><i data-feather="linkedin" class="w-4 h-4"></i> LinkedIn</a>
+          <a class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-md" href="https://github.com/tanishkamali14" target="_blank" rel="noopener"><i data-feather="github" class="w-4 h-4"></i> GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume -->
+    <section id="resume" class="mt-16">
+      <h2 class="text-2xl font-bold mb-4">Resume</h2>
+      <p class="text-gray-300">My current resume is available for download below. Use the button to save a copy or view it in the embedded preview.</p>
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <a class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 px-5 py-3 rounded-md font-semibold" href="./resume.pdf" download>
+          <i data-feather="download" class="w-5 h-5"></i> Download Resume
+        </a>
+        <a class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-5 py-3 rounded-md font-semibold" href="https://github.com/tanishkamali14/tanishkamali14.github.io" target="_blank" rel="noopener">
+          <i data-feather="globe" class="w-5 h-5"></i> Site Repo
+        </a>
+      </div>
+      <object data="./resume.pdf" type="application/pdf" class="w-full h-[70vh] rounded-xl border border-white/10"></object>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-gray-400">
+      <p>© <span id="year"></span> Tanishka Mali • CyberFlix</p>
+      <div class="flex items-center gap-4">
+        <button id="themeToggle" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-2 rounded-md"><i data-feather="moon" class="w-4 h-4"></i><span>Theme</span></button>
+        <a href="#top" class="hover:text-white">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Navbar Component -->
+  <script>
+    class CustomNavbar extends HTMLElement {
+      connectedCallback() {
+        this.innerHTML = `
+        <header class="fixed top-0 left-0 right-0 z-50">
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mt-4 flex items-center justify-between rounded-2xl bg-black/40 backdrop-blur border border-white/10 px-4 py-3">
+              <div class="flex items-center gap-3">
+                <div class="h-8 w-8 rounded bg-primary-500 grid place-content-center font-black">C</div>
+                <a href="#" class="text-xl font-black tracking-tight">CyberFlix</a>
+              </div>
+              <nav class="hidden md:flex items-center gap-6 text-sm">
+                <a class="hover:text-white text-gray-300" href="#projects">Projects</a>
+                <a class="hover:text-white text-gray-300" href="#experience">Experience</a>
+                <a class="hover:text-white text-gray-300" href="#education">Education</a>
+                <a class="hover:text-white text-gray-300" href="#competitions">CTFs</a>
+                <a class="hover:text-white text-gray-300" href="#skills">Skills</a>
+                <a class="hover:text-white text-gray-300" href="#contact">Contact</a>
+              </nav>
+              <button id="menuBtn" class="md:hidden inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-2 rounded-md">
+                <i data-feather="menu" class="w-5 h-5"></i>
+              </button>
+            </div>
+          </div>
+          <div id="mobileNav" class="md:hidden hidden mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mt-2 rounded-2xl bg-black/60 backdrop-blur border border-white/10 px-4 py-3 flex flex-col">
+              <a class="py-2 border-b border-white/10" href="#projects">Projects</a>
+              <a class="py-2 border-b border-white/10" href="#experience">Experience</a>
+              <a class="py-2 border-b border-white/10" href="#education">Education</a>
+              <a class="py-2 border-b border-white/10" href="#competitions">CTFs</a>
+              <a class="py-2 border-b border-white/10" href="#skills">Skills</a>
+              <a class="py-2" href="#contact">Contact</a>
+            </div>
+          </div>
+        </header>`
+      }
+    }
+    customElements.define('custom-navbar', CustomNavbar)
+  </script>
+
+  <!-- Page Scripts -->
+  <script>
+    feather.replace()
+    document.getElementById('year').textContent = new Date().getFullYear()
+    const themeBtn = document.getElementById('themeToggle')
+    const root = document.documentElement
+    const stored = localStorage.getItem('theme')
+    if (stored === 'light') root.classList.remove('dark')
+    themeBtn?.addEventListener('click', () => {
+      root.classList.toggle('dark')
+      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light')
+    })
+    const menuBtn = document.getElementById('menuBtn')
+    const mobileNav = document.getElementById('mobileNav')
+    menuBtn?.addEventListener('click', () => mobileNav.classList.toggle('hidden'))
+  </script>
+</body>
+</html>
