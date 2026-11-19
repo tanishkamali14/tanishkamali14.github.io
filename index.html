@@ -1,392 +1,599 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CyberFlix | Tanishka Mali – Security Portfolio</title>
-  <meta name="description" content="Tanishka Mali – Cybersecurity portfolio. Threat analysis, reverse engineering, CTFs, and secure software projects." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23E50914'/><text x='50' y='58' font-size='56' text-anchor='middle' fill='white' font-family='Arial'>C</text></svg>">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: { inter: ["Inter", "ui-sans-serif", "system-ui"] },
-          colors: {
-            primary: { 500: '#E50914', 600: '#B2070F' },
-            secondary: { 500: '#141414', 600: '#0F0F0F' }
-          },
-          boxShadow: { glow: '0 0 0 1px rgba(229,9,20,.35), 0 12px 24px -8px rgba(0,0,0,.7)' }
-        }
-      }
-    }
-  </script>
-  <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
-  <script src="https://unpkg.com/feather-icons"></script>
+  <title>Tanishka Mali | Software Developer</title>
+  <meta name="description" content="Tanishka Mali – Software developer building backend services, microservices and full-stack web apps with C#/.NET, Python and TypeScript. M.S. from Penn State." />
+  <meta name="theme-color" content="#4b5631" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='50' fill='%234b5631'/><text x='50' y='64' font-size='42' font-weight='700' text-anchor='middle' fill='%23f59a4a' font-family='Georgia'>TM</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
   <style>
-    html, body { scroll-behavior: smooth; }
-    .row-scroll { display: grid; grid-auto-flow: column; grid-auto-columns: 18rem; gap: 1rem; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; padding-bottom: .5rem; }
-    .row-scroll > * { scroll-snap-align: start; }
-    .card-zoom { transform: translateY(0) scale(1); transition: transform .25s ease, box-shadow .25s ease; }
-    .card-zoom:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 12px 30px -12px rgba(0,0,0,.6); }
-    .glass { background: linear-gradient(180deg, rgba(20,20,20,.2), rgba(20,20,20,.5)); backdrop-filter: blur(6px); }
+    :root {
+      /* page (brown) */
+      --bg: #4b5631;
+      --bg-deep: #363e22;
+      --on-bg: #f7f2e4;
+      --on-bg-muted: #d8dbc0;
+      --on-bg-line: rgba(247,242,228,.18);
+      --accent-bg: #f59a4a;
+      /* cards (cream) */
+      --surface: #f8f3e6;
+      --ink: #2e3419;
+      --muted: #5c6143;
+      --faint: #8d9071;
+      --line: #e4ddc9;
+      --accent: #d35f1f;
+      --accent-soft: #fde5d2;
+      --accent-line: #f3b386;
+      --head: "Fraunces", Georgia, "Times New Roman", serif;
+      --body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body { margin: 0; background: var(--bg); color: var(--on-bg); font-family: var(--body); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { font-family: var(--head); letter-spacing: -.01em; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+    section { padding: 80px 0 0; scroll-margin-top: 70px; }
+    .sec-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 28px; border-bottom: 1px solid var(--on-bg-line); padding-bottom: 14px; }
+    .sec-head h2 { margin: 0; font-size: clamp(28px, 3.6vw, 38px); font-weight: 700; color: var(--on-bg); }
+    .sec-head p { margin: 0; color: var(--on-bg-muted); font-size: 14px; }
+    .accent { color: var(--accent-bg); }
+
+    /* cream "content" surfaces */
+    .card-surface, .skill-table, .proj, .awards, .box, .highlights, .panel, .contact, .resume-frame { background: var(--surface); color: var(--ink); }
+    .box .accent, .resume-frame .accent, .contact .accent { color: var(--accent); }
+
+    /* Header */
+    header.top { position: sticky; top: 0; z-index: 40; background: rgba(54,62,34,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--on-bg-line); }
+    header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: var(--head); font-weight: 700; font-size: 18px; color: var(--on-bg); }
+    .logo i { width: 32px; height: 32px; border-radius: 50%; background: var(--surface); color: var(--ink); display: grid; place-items: center; font-style: normal; font-size: 13px; }
+    .nav { display: flex; gap: 26px; font-size: 14px; color: var(--on-bg-muted); align-items: center; }
+    .nav a:hover { color: var(--on-bg); }
+
+    /* Buttons on the brown page */
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px; font-size: 14px; font-weight: 600; border: 1px solid rgba(247,242,228,.35); background: transparent; color: var(--on-bg); transition: border-color .2s, background .2s, color .2s, transform .2s; }
+    .btn:hover { border-color: var(--on-bg); transform: translateY(-1px); }
+    .btn.solid { background: var(--surface); color: var(--ink); border-color: var(--surface); }
+    .btn.solid:hover { background: var(--accent-bg); border-color: var(--accent-bg); color: var(--bg-deep); }
+    .btn svg { width: 16px; height: 16px; }
+    .menu-btn { display: none; border: 1px solid var(--surface); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 7px 14px; font: 600 13px var(--body); cursor: pointer; }
+    .mobile-nav { display: none; padding: 6px 28px 18px; border-top: 1px solid var(--on-bg-line); }
+    .mobile-nav a { display: block; padding: 11px 0; border-bottom: 1px solid var(--on-bg-line); color: var(--on-bg-muted); }
+    .mobile-nav.open { display: block; }
+
+    /* Intro + summary */
+    .intro { display: grid; grid-template-columns: 1fr 280px; gap: 56px; align-items: center; padding: 72px 0 0; }
+    .hello { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--accent-bg); background: rgba(245,154,74,.12); border: 1px solid rgba(245,154,74,.4); padding: 5px 12px; border-radius: 999px; }
+    .hello b { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-bg); }
+    .intro h1 { font-size: clamp(42px, 6.6vw, 70px); line-height: 1.04; margin: 18px 0 6px; font-weight: 700; color: var(--on-bg); }
+    .intro h1 span { color: var(--accent-bg); }
+    .role { font-family: var(--head); font-size: clamp(18px, 2.2vw, 22px); color: var(--on-bg-muted); font-weight: 600; margin: 0 0 22px; }
+    .summary { color: #eef0dc; font-size: 17px; max-width: 640px; }
+    .summary p { margin: 0 0 12px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+    .photo { position: relative; }
+    .photo img, .photo .ph { width: 280px; height: 340px; object-fit: cover; border-radius: 160px 160px var(--radius) var(--radius); border: 6px solid var(--surface); background: linear-gradient(160deg, var(--surface), var(--accent-soft)); display: block; }
+    .photo .ph { display: none; place-items: center; font: 700 64px var(--head); color: var(--accent); }
+    .photo .badge { position: absolute; left: -26px; bottom: 26px; background: var(--surface); color: var(--ink); border-radius: 12px; padding: 10px 14px; box-shadow: 0 16px 34px -14px rgba(0,0,0,.55); font-size: 13px; }
+    .photo .badge strong { display: block; font-family: var(--head); font-size: 20px; color: var(--accent); line-height: 1.1; }
+
+    .highlights { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 56px; border-radius: var(--radius); }
+    .hl { padding: 22px 24px; border-right: 1px solid var(--line); }
+    .hl:last-child { border-right: 0; }
+    .hl strong { display: block; font-family: var(--head); font-size: 32px; font-weight: 700; line-height: 1.1; color: var(--ink); }
+    .hl span { color: var(--muted); font-size: 14px; }
+
+    /* Chips (used inside cream cards) */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { font-size: 13px; padding: 4px 12px; border-radius: 999px; background: #ece8d6; color: #4b5132; border: 1px solid transparent; }
+    .chip.key { background: var(--accent-soft); color: var(--accent); border-color: var(--accent-line); font-weight: 600; }
+    .legend { display: inline-flex; align-items: center; gap: 8px; }
+    .legend .chip.key { background: rgba(245,154,74,.14); color: var(--accent-bg); border-color: rgba(245,154,74,.45); }
+
+    /* Skills */
+    .skill-table { border-radius: var(--radius); overflow: hidden; }
+    .skill-row { display: grid; grid-template-columns: 210px 1fr; gap: 20px; padding: 18px 24px; border-bottom: 1px solid var(--line); align-items: start; }
+    .skill-row:last-child { border-bottom: 0; }
+    .skill-row h3 { margin: 4px 0 0; font-size: 16px; font-weight: 700; }
+
+    /* Experience */
+    .panel { border-radius: var(--radius); padding: 0 28px; }
+    .exp { display: grid; grid-template-columns: 190px 1fr; gap: 28px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+    .exp:last-child { border-bottom: 0; }
+    .exp .meta { color: var(--muted); font-size: 14px; }
+    .exp .meta strong { display: block; color: var(--ink); font-weight: 600; }
+    .exp h3 { margin: 0; font-size: 21px; }
+    .exp .co { color: var(--accent); font-weight: 600; font-size: 15px; margin-top: 2px; }
+    ul.list { margin: 12px 0 0; padding-left: 20px; color: #3d4325; }
+    ul.list li { margin: 6px 0; }
+    ul.list li::marker { color: var(--accent); }
+
+    /* Projects */
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .filters button { font: 600 13px var(--body); padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(247,242,228,.35); background: transparent; color: var(--on-bg-muted); cursor: pointer; transition: all .2s; }
+    .filters button:hover { color: var(--on-bg); border-color: var(--on-bg); }
+    .filters button.on { background: var(--surface); color: var(--ink); border-color: var(--surface); }
+    .projects { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
+    .proj { grid-column: span 2; border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; border: 1px solid transparent; transition: box-shadow .2s, transform .2s; }
+    .proj:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -22px rgba(0,0,0,.6); }
+    .proj.feat { grid-column: span 3; border: 2px solid var(--accent-bg); }
+    .proj .kicker { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 12.5px; color: var(--faint); }
+    .proj .star { color: var(--accent); background: var(--accent-soft); border: 1px solid var(--accent-line); font-weight: 600; padding: 2px 10px; border-radius: 999px; font-size: 12px; }
+    .proj h3 { margin: 10px 0 4px; font-size: 20px; }
+    .proj.feat h3 { font-size: 23px; }
+    .proj .what { color: var(--muted); font-size: 14px; margin: 0; }
+    .proj ul.list { font-size: 14px; flex: 1; }
+    .proj .chips { margin-top: 16px; }
+    .proj .chip { font-size: 12px; padding: 3px 10px; }
+    .proj .go { margin-top: 18px; font-size: 14px; font-weight: 600; color: var(--accent); display: inline-flex; gap: 6px; align-items: center; }
+    .proj .go:hover { text-decoration: underline; }
+    .proj .go + .go { margin-left: 16px; }
+    .proj.hide { display: none; }
+
+    /* Achievements */
+    .win { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; background: var(--bg-deep); color: var(--on-bg); border: 1px solid rgba(245,154,74,.45); border-radius: var(--radius); padding: 28px 30px; margin-bottom: 18px; }
+    .win .big { font-family: var(--head); font-size: 56px; font-weight: 700; color: var(--accent-bg); line-height: 1; }
+    .win h3 { margin: 0; font-size: 21px; }
+    .win p { margin: 4px 0 0; color: var(--on-bg-muted); font-size: 15px; }
+    .awards { border-radius: var(--radius); }
+    .award { display: grid; grid-template-columns: 170px 1fr; gap: 20px; padding: 16px 24px; border-bottom: 1px solid var(--line); align-items: baseline; }
+    .award:last-child { border-bottom: 0; }
+    .award .place { font-weight: 700; color: var(--accent); font-size: 14px; }
+    .award h4 { margin: 0; font-size: 16px; }
+    .award p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+
+    /* Education / certs */
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .box { border-radius: var(--radius); padding: 24px; }
+    .box h3 { margin: 0 0 14px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); font-family: var(--body); font-weight: 600; }
+    .item { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .item:last-child { border-bottom: 0; padding-bottom: 0; }
+    .item .row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .item h4 { margin: 0; font-size: 16px; }
+    .item span.when { color: var(--faint); font-size: 13.5px; }
+    .item p { margin: 3px 0 0; color: var(--muted); font-size: 14.5px; }
+    .item a { color: var(--accent); font-weight: 600; font-size: 14px; }
+    .tagx { font-size: 12px; font-weight: 600; padding: 2px 10px; border-radius: 999px; background: #ece8d6; color: var(--muted); }
+    .tagx.ok { background: #e2e9cb; color: #4b6121; }
+
+    /* Contact (cream card) */
+    .contact { border-radius: 22px; padding: 44px; display: grid; grid-template-columns: 1fr auto; gap: 26px; align-items: center; }
+    .contact h2 { margin: 0 0 8px; font-size: clamp(28px, 3.8vw, 40px); color: var(--ink); }
+    .contact p { margin: 0; color: var(--muted); }
+    .contact .actions { margin: 0; }
+    .contact .btn { border-color: var(--accent-line); color: var(--ink); }
+    .contact .btn:hover { border-color: var(--ink); }
+    .contact .btn.solid { background: var(--accent); color: #fff8ef; border-color: var(--accent); }
+    .contact .btn.solid:hover { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+    .resume-frame { width: 100%; height: 78vh; border: 0; border-radius: var(--radius); }
+    .resume-frame p { color: var(--muted); background: var(--surface); border-radius: var(--radius); margin: 0; }
+    footer { margin-top: 80px; border-top: 1px solid var(--on-bg-line); padding: 26px 0 34px; color: var(--on-bg-muted); font-size: 13.5px; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    footer a:hover { color: var(--on-bg); }
+
+    @media (max-width: 920px) {
+      .nav { display: none; }
+      .menu-btn { display: inline-block; }
+      .intro { grid-template-columns: 1fr; gap: 36px; padding-top: 48px; }
+      .photo { order: -1; }
+      .photo img, .photo .ph { width: 180px; height: 220px; }
+      .photo .badge { left: 150px; bottom: 16px; }
+      .highlights { grid-template-columns: 1fr 1fr; }
+      .hl:nth-child(2) { border-right: 0; }
+      .hl:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .projects { grid-template-columns: 1fr 1fr; }
+      .proj, .proj.feat { grid-column: span 1; }
+      .exp { grid-template-columns: 1fr; gap: 6px; }
+      .two { grid-template-columns: 1fr; }
+      .contact { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      body { font-size: 15px; }
+      .wrap { padding: 0 18px; }
+      .projects { grid-template-columns: 1fr; }
+      .skill-row { grid-template-columns: 1fr; gap: 10px; padding: 16px 18px; }
+      .award { grid-template-columns: 1fr; gap: 2px; padding: 14px 18px; }
+      .win { grid-template-columns: 1fr; padding: 24px; }
+      .contact { padding: 30px 24px; }
+      .panel { padding: 0 20px; }
+      .sec-head { flex-direction: column; align-items: start; }
+      .summary { font-size: 16px; }
+    }
+      /* ===== Orange & cream gradients ===== */
+    :root {
+      --grad-orange: linear-gradient(135deg, #f8b26a 0%, #ef7d32 55%, #d35f1f 100%);
+      --grad-card: linear-gradient(165deg, #fbf7ec 0%, #f8f1e2 55%, #fbe4cd 100%);
+      --grad-text: linear-gradient(100deg, #fbf3e3 0%, #fbd9b5 55%, #f59a4a 100%);
+    }
+    body {
+      background:
+        radial-gradient(900px 520px at 85% -5%, rgba(245,154,74,.30), transparent 65%),
+        radial-gradient(700px 480px at -10% 30%, rgba(251,232,206,.10), transparent 60%),
+        radial-gradient(1000px 700px at 110% 55%, rgba(245,154,74,.14), transparent 60%),
+        radial-gradient(900px 700px at -10% 85%, rgba(245,154,74,.12), transparent 60%),
+        linear-gradient(180deg, #4b5631 0%, #434d2b 50%, #3b4426 100%);
+    }
+
+    /* gradient text */
+    .intro h1, .sec-head h2 { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .intro h1 span { -webkit-text-fill-color: #f59a4a; }
+    .sec-head { border-bottom: 0; position: relative; }
+    .sec-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px; background: linear-gradient(90deg, #f59a4a 0%, rgba(251,217,181,.55) 40%, rgba(247,242,228,.08) 100%); }
+
+    /* gradient buttons */
+    .btn.solid, .filters button.on { background: var(--grad-orange); color: #fff8ef; border-color: transparent; box-shadow: 0 10px 24px -12px rgba(211,95,31,.8); }
+    .btn.solid:hover { background: linear-gradient(135deg, #fbd9b5 0%, #f8b26a 100%); color: #2e3419; border-color: transparent; }
+    .hello { background: linear-gradient(90deg, rgba(245,154,74,.28), rgba(251,232,206,.10)); }
+
+    /* cream cards with an orange fade */
+    .skill-table, .proj, .awards, .box, .panel, .resume-frame { background: var(--grad-card); }
+    .highlights { background: linear-gradient(90deg, #fbf7ec 0%, #f9efdd 60%, #fbdcbf 100%); }
+    .hl strong { background: linear-gradient(100deg, #2e3419 0%, #8a4a1f 70%, #d35f1f 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .proj.feat { border: 0; background: linear-gradient(180deg, #fcd3ad 0%, #fbe6cf 22%, #f9f3e6 55%, #fbf7ec 100%); box-shadow: inset 0 0 0 2px rgba(245,154,74,.85); }
+    .proj.feat .star { background: var(--grad-orange); color: #fff8ef; border-color: transparent; }
+    .chip.key { background: linear-gradient(135deg, #fde5d2 0%, #fbd0ab 100%); }
+    .photo img, .photo .ph { background: linear-gradient(170deg, #fbf7ec 0%, #fbe0c4 60%, #f7b27a 100%); border-color: #fbe9d4; }
+    .photo .badge { background: linear-gradient(135deg, #fbf7ec, #fde3c9); }
+
+    /* banner + contact */
+    .win { background: linear-gradient(115deg, #2f3720 0%, #4a4a22 45%, #b8571d 100%); border-color: rgba(245,154,74,.55); }
+    .win .big { background: linear-gradient(180deg, #fde7cc, #f59a4a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .win p { color: #efe6d2; }
+    .contact { background: linear-gradient(120deg, #fbf7ec 0%, #fbe6cf 45%, #f8b778 85%, #f2934a 100%); }
+    .contact .btn.solid { background: var(--ink); color: #fff8ef; border-color: var(--ink); box-shadow: none; }
+    .contact .btn.solid:hover { background: #fff8ef; color: var(--ink); border-color: #fff8ef; }
+    .contact .btn { border-color: rgba(46,52,25,.35); }
+    .contact .btn:hover { border-color: var(--ink); }
+    .logo i { background: var(--grad-orange); color: #fff8ef; }
+    footer { border-top: 0; position: relative; }
+    footer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(245,154,74,.7), rgba(251,232,206,.4), transparent); }
   </style>
 </head>
-<body class="bg-secondary-500 text-gray-100 min-h-screen font-inter">
-  <custom-navbar></custom-navbar>
+<body id="top">
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
-    <!-- Hero -->
-    <section class="relative h-[26rem] md:h-[30rem] rounded-2xl overflow-hidden shadow-glow">
-      <!-- Updated hero image to generic placeholder for easier customization. Replace this URL with a real photo if desired. -->
-      <img src="./me.jpeg"
-      alt="Tanishka Mali"
-      class="absolute inset-0 w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-gradient-to-t from-secondary-500 via-black/40 to-transparent"></div>
-      <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-        <div class="max-w-3xl">
-          <!-- Updated hero headline and description to better capture current interests and achievements -->
-          <h1 class="text-4xl md:text-5xl font-black leading-tight">Tanishka Ganesh Mali</h1>
-          <p class="text-lg md:text-xl text-gray-300 mt-3">I’m a security engineer crafting my master’s journey in cybersecurity, analytics, and operations. Competitive cyber games are where I come alive. Over 10 CTFs later, I’ve built, broken, defended, and explored. This website is my portfolio of everything I’m proud to share. I hope you enjoy the ride.</p>
-          <div class="flex flex-wrap items-center gap-3 mt-6">
-            <a href="#projects" class="bg-primary-500 hover:bg-primary-600 px-6 py-3 rounded-md font-semibold">View Projects</a>
-            <a href="#contact" class="bg-white/10 hover:bg-white/20 px-6 py-3 rounded-md font-semibold">Contact Me</a>
-            <a href="#resume" class="inline-flex items-center gap-2 text-gray-200 hover:text-white"><i data-feather="download" class="w-5 h-5"></i> Resume </a>
+  <header class="top">
+    <div class="wrap">
+      <a href="#top" class="logo"><i>TM</i>Tanishka Mali</a>
+      <nav class="nav">
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+        <a href="#resume" class="btn solid">Resume</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">Menu</button>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#achievements">Achievements</a><a href="#education">Education</a><a href="#contact">Contact</a><a href="#resume">Resume</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ===== Intro + Summary ===== -->
+    <div class="intro" id="summary">
+      <div>
+        <span class="hello"><b></b> Open to software engineering roles</span>
+        <h1>Hi, I'm Tanishka<span>.</span></h1>
+        <p class="role">Software Developer · Backend &amp; Full-Stack</p>
+        <div class="summary">
+          <p>I build backend services, microservices and full-stack web apps. Most of my recent work is in C# and ASP.NET Core: Web APIs, services that talk over REST, gRPC and RabbitMQ, and SQL Server databases with Entity Framework Core. On the frontend I use React, Next.js and TypeScript.</p>
+          <p>At Penn State I built a multi-agent system on AWS and led our team to <strong class="accent">#1 overall</strong> in the Amazon Nova AI Challenge. My security background shapes how I build: tested, reliable and safe by default.</p>
+        </div>
+        <div class="actions">
+          <a class="btn solid" href="#projects">See my work</a>
+          <a class="btn" href="./resume1.pdf" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>Resume</a>
+          <a class="btn" href="https://github.com/tanishkamali14" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 00-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.34-1.28-1.7-1.28-1.7-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 015.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0012 .5z"/></svg>GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/tanishkamali/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>LinkedIn</a>
+        </div>
+      </div>
+      <div class="photo">
+        <img src="./me.jpeg" alt="Tanishka Mali" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+        <div class="ph">TM</div>
+        <div class="badge"><strong>#1 Overall</strong>Amazon Nova AI Challenge</div>
+      </div>
+    </div>
+
+    <div class="highlights">
+      <div class="hl"><strong>75+</strong><span>web apps tested by the agent system I built on AWS</span></div>
+      <div class="hl"><strong>4</strong><span>ASP.NET Core microservices behind one API gateway</span></div>
+      <div class="hl"><strong>40%</strong><span>faster web app at 99 Digital</span></div>
+      <div class="hl"><strong>3.93</strong><span>M.S. GPA, Penn State</span></div>
+    </div>
+
+    <!-- ===== Skills ===== -->
+    <section id="skills">
+      <div class="sec-head"><h2>Skills</h2><p class="legend"><span class="chip key">Highlighted</span> = used most</p></div>
+      <div class="skill-table">
+        <div class="skill-row"><h3>Languages</h3><div class="chips"><span class="chip key">C#</span><span class="chip key">Python</span><span class="chip key">TypeScript</span><span class="chip key">SQL</span><span class="chip">JavaScript</span><span class="chip">C/C++</span><span class="chip">Bash</span><span class="chip">HTML/CSS</span></div></div>
+        <div class="skill-row"><h3>Backend &amp; .NET</h3><div class="chips"><span class="chip key">ASP.NET Core Web API</span><span class="chip key">Entity Framework Core</span><span class="chip">ASP.NET Core MVC</span><span class="chip">.NET Core</span><span class="chip">LINQ</span><span class="chip">MediatR</span><span class="chip key">FastAPI</span><span class="chip">asyncio</span><span class="chip">SQLAlchemy</span><span class="chip">REST APIs</span><span class="chip">gRPC</span></div></div>
+        <div class="skill-row"><h3>Frontend</h3><div class="chips"><span class="chip key">React</span><span class="chip key">Next.js</span><span class="chip">Razor (ASP.NET Core MVC)</span><span class="chip">Streamlit</span></div></div>
+        <div class="skill-row"><h3>Databases &amp; Messaging</h3><div class="chips"><span class="chip key">SQL Server</span><span class="chip key">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">RabbitMQ</span></div></div>
+        <div class="skill-row"><h3>Cloud &amp; DevOps</h3><div class="chips"><span class="chip key">AWS (Bedrock, S3, IAM)</span><span class="chip key">Docker</span><span class="chip key">GitHub Actions (CI/CD)</span><span class="chip">Docker Compose</span><span class="chip">Kubernetes</span><span class="chip">Helm</span><span class="chip">GCP (GKE, Cloud KMS)</span><span class="chip">Jenkins</span><span class="chip">Vercel</span><span class="chip">OpenTelemetry</span><span class="chip">Git</span><span class="chip">Linux</span><span class="chip">Visual Studio</span></div></div>
+        <div class="skill-row"><h3>Testing</h3><div class="chips"><span class="chip key">Unit &amp; integration testing</span><span class="chip key">Playwright</span><span class="chip">pytest</span><span class="chip">End-to-end testing</span><span class="chip">Debugging</span></div></div>
+        <div class="skill-row"><h3>Concepts</h3><div class="chips"><span class="chip key">Microservices</span><span class="chip key">Database Design</span><span class="chip">Distributed Systems</span><span class="chip">System Design</span><span class="chip">CQRS</span><span class="chip">Batch &amp; Async Processing</span><span class="chip">Object-Oriented Design</span><span class="chip">Data Structures &amp; Algorithms</span><span class="chip">Agile/SDLC</span></div></div>
+        <div class="skill-row"><h3>Security</h3><div class="chips"><span class="chip">Application Security (OWASP Top 10)</span><span class="chip">Threat Modeling</span><span class="chip">SAST/DAST</span><span class="chip">Supply-chain Security</span><span class="chip">Policy-as-Code (Kyverno)</span><span class="chip">Falco</span><span class="chip">Burp Suite</span><span class="chip">Wazuh</span><span class="chip">Malware Analysis</span><span class="chip">MITRE ATT&amp;CK</span></div></div>
+      </div>
+    </section>
+
+    <!-- ===== Experience ===== -->
+    <section id="experience">
+      <div class="sec-head"><h2>Experience</h2><p>Newest first</p></div>
+      <div class="panel">
+        <div class="exp">
+          <div class="meta"><strong>Jan 2026 – May 2026</strong>State College, PA</div>
+          <div>
+            <h3>Agentic AI Developer</h3><div class="co">Penn State University – Amazon</div>
+            <ul class="list">
+              <li>Led team Lion-0xA to #1 Overall, #1 Benign User Agent and #2 Security Agent in the global Amazon Nova AI Challenge.</li>
+              <li>Designed and built a multi-agent system in Python on AWS (Bedrock, Strands SDK, RAG) that found and verified security vulnerabilities across 75+ web applications and 8 vulnerability classes.</li>
+              <li>Wrote automated end-to-end test suites in Playwright and TypeScript covering user and adversarial workflows, catching regressions across releases; verified results rose from 40 to 53 apps.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp">
+          <div class="meta"><strong>Aug 2024 – May 2026</strong>State College, PA</div>
+          <div>
+            <h3>Graduate Teaching Assistant</h3><div class="co">Penn State University</div>
+            <ul class="list">
+              <li>Taught Malware Analytics labs covering C, assembly, debugging, reverse engineering, static/dynamic analysis and ML-based malware classification.</li>
+              <li>Taught Deception &amp; Counterdeception, coaching students through real-world case studies and written analytic reports.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp">
+          <div class="meta"><strong>Jun 2023 – Dec 2023</strong>Pune, India</div>
+          <div>
+            <h3>Vulnerability Management Intern</h3><div class="co">Balbird Industries</div>
+            <ul class="list">
+              <li>Tested enterprise (ERP) web applications for input-validation flaws, confirming OpenVAS scanner findings by hand.</li>
+              <li>Cut sensitive data in logs by 60% through data minimization, and enforced password and lockout controls.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp">
+          <div class="meta"><strong>Feb 2023 – May 2023</strong>Pune, India</div>
+          <div>
+            <h3>Software Developer Intern</h3><div class="co">99 Digital</div>
+            <ul class="list">
+              <li>Improved web application performance by 40% by moving heavy processing into batch and asynchronous background jobs and applying code splitting and lazy loading to cut initial bundle size.</li>
+              <li>Reduced API request failures by 30% by adding retry-with-backoff handling (Axios) to frontend-to-backend calls, improving end-to-end reliability.</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Category Pills -->
-    <section class="mt-12">
-      <h2 class="text-2xl font-bold mb-4">Explore My Work</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-        <a href="#projects" class="card-zoom bg-secondary-600 rounded-xl p-4 h-36 flex items-center justify-center hover:ring-2 ring-primary-500"><div class="text-center"><i data-feather="code" class="w-8 h-8 mx-auto mb-2"></i><h3>Projects</h3></div></a>
-        <a href="#education" class="card-zoom bg-secondary-600 rounded-xl p-4 h-36 flex items-center justify-center hover:ring-2 ring-primary-500"><div class="text-center"><i data-feather="book" class="w-8 h-8 mx-auto mb-2"></i><h3>Education</h3></div></a>
-        <a href="#experience" class="card-zoom bg-secondary-600 rounded-xl p-4 h-36 flex items-center justify-center hover:ring-2 ring-primary-500"><div class="text-center"><i data-feather="briefcase" class="w-8 h-8 mx-auto mb-2"></i><h3>Experience</h3></div></a>
-        <a href="#competitions" class="card-zoom bg-secondary-600 rounded-xl p-4 h-36 flex items-center justify-center hover:ring-2 ring-primary-500"><div class="text-center"><i data-feather="award" class="w-8 h-8 mx-auto mb-2"></i><h3>CTFs</h3></div></a>
-        <a href="#papers" class="card-zoom bg-secondary-600 rounded-xl p-4 h-36 flex items-center justify-center hover:ring-2 ring-primary-500"><div class="text-center"><i data-feather="file-text" class="w-8 h-8 mx-auto mb-2"></i><h3>Papers</h3></div></a>
-        <a href="#certifications" class="card-zoom bg-secondary-600 rounded-xl p-4 h-36 flex items-center justify-center hover:ring-2 ring-primary-500"><div class="text-center"><i data-feather="shield" class="w-8 h-8 mx-auto mb-2"></i><h3>Certs</h3></div></a>
+    <!-- ===== Projects ===== -->
+    <section id="projects">
+      <div class="sec-head"><h2>Projects</h2><p>Featured work first</p></div>
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="on" data-f="all">All</button>
+        <button data-f="backend">Backend</button>
+        <button data-f="fullstack">Full-stack</button>
+        <button data-f="cloud">Cloud &amp; DevOps</button>
+        <button data-f="security">Security &amp; ML</button>
       </div>
-    </section>
 
-    <!-- Featured Rows -->
-    <section id="projects" class="mt-12 space-y-8">
-      <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-bold">Featured Projects</h2>
-      </div>
-      <div class="row-scroll">
-        <article class="relative bg-secondary-600 rounded-xl overflow-hidden card-zoom">
-          <a href="https://github.com/tanishkamali14/Ransomware-Detection" target="_blank">
-            <!-- Placeholder image; swap this with a relevant photo hosted online if available -->
-            <img class="h-40 w-full object-cover" src="./ransom_ml.png" alt="Ransomware ML Detection" />
-            <div class="p-4"><h3 class="font-bold text-lg">Ransomware Detection (ML)</h3><p class="text-sm text-gray-300">Machine‑learning based ransomware behavior detection system.</p></div>
-          </a>
-        </article>
-        <article class="relative bg-secondary-600 rounded-xl overflow-hidden card-zoom">
-          <a href="https://github.com/png270/iot-mitre-threat-mapping" target="_blank">
-            <!-- Placeholder image for IoT MITRE Threat Mapping -->
-            <img class="h-40 w-full object-cover" src="./IOT.jpg" alt="IoT MITRE Threat Mapping" />
-            <div class="p-4"><h3 class="font-bold text-lg">IoT MITRE Threat Mapping</h3><p class="text-sm text-gray-300">Threat‑mapping engine aligning IoT attacks with MITRE ATT&CK.</p></div>
-          </a>
-        </article>
-        <article class="relative bg-secondary-600 rounded-xl overflow-hidden card-zoom">
-          <a href="https://github.com/tanishkamali14/cyberprobe" target="_blank">
-            <!-- Placeholder image for CyberProbe Recon Framework -->
-            <img class="h-40 w-full object-cover" src="./Pentest.avif" alt="CyberProbe Pentesting Framework" />
-            <div class="p-4"><h3 class="font-bold text-lg">CyberProbe – PenTesting Framework</h3><p class="text-sm text-gray-300">A framework for automating installation, updation, and organization of Pentesting tools.</p></div>
-          </a>
-        </article>
-        <article class="relative bg-secondary-600 rounded-xl overflow-hidden card-zoom">
-          <a href="https://github.com/code-glyph/container-security-pipeline/tree/main" target="_blank">
-            <!-- Placeholder image for Container Security Pipeline -->
-            <img class="h-40 w-full object-cover" src="./gcp.png" alt="GCP Binary Authorization Pipeline" />
-            <div class="p-4"><h3 class="font-bold text-lg">Container Security Pipeline</h3><p class="text-sm text-gray-300">End‑to‑end supply chain pipeline with signing, attestation, and enforcement.</p></div>
-          </a>
-        </article>
-        <!-- New project: OWASP Top 10 Vulnerability Scanner -->
-        <article class="relative bg-secondary-600 rounded-xl overflow-hidden card-zoom">
-          <a href="https://github.com/tanishkamali14/owasp-top10-vulnerability-scanner" target="_blank">
-            <img class="h-40 w-full object-cover" src="./vulnerability_scanner.png" alt="OWASP Top 10 Vulnerability Scanner" />
-            <div class="p-4"><h3 class="font-bold text-lg">OWASP Top 10 Scanner</h3><p class="text-sm text-gray-300">Automated tool to scan web apps for the most critical OWASP vulnerabilities.</p></div>
-          </a>
-        </article>
-        <!-- New project: AI‑Based Network Intrusion Detection System -->
-        <article class="relative bg-secondary-600 rounded-xl overflow-hidden card-zoom">
-          <a href="https://github.com/tanishkamali14/AI-Based-Network-Intrusion-Detection-System" target="_blank">
-            <img class="h-40 w-full object-cover" src="./ai_nids.png" alt="AI‑Based Network Intrusion Detection System" />
-            <div class="p-4"><h3 class="font-bold text-lg">AI‑Based NIDS</h3><p class="text-sm text-gray-300">Machine‑learning driven intrusion detection with real‑time dashboards.</p></div>
-          </a>
-        </article>
-        <!-- New project: Microservices App (Dotnet) -->
-        <article class="relative bg-secondary-600 rounded-xl overflow-hidden card-zoom">
-          <a href="https://github.com/tanishkamali14/Microservices-App-dotnet-" target="_blank">
-            <img class="h-40 w-full object-cover" src="./microservices.png" alt="Microservices Application" />
-            <div class="p-4"><h3 class="font-bold text-lg">Microservices App (Dotnet)</h3><p class="text-sm text-gray-300">A .NET microservices application demonstrating distributed service patterns.</p></div>
-          </a>
-        </article>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section id="education" class="mt-16">
-      <h2 class="text-2xl font-bold mb-6">Education</h2>
-      <div class="grid md:grid-cols-2 gap-4">
-        <div class="bg-secondary-600 rounded-xl p-5 glass">
-          <div class="flex items-start justify-between gap-3">
-            <div>
-              <h3 class="text-xl font-bold">Pennsylvania State University</h3>
-              <p class="text-gray-400">M.S. Cybersecurity Analytics & Operations • Aug 2024 – May 2026</p>
-              <p class="text-gray-300 mt-2">GPA: 3.98 • Focus: Reverse Engineering, Risk & Incident Response.</p>
-            </div>
-            <div class="bg-primary-500/90 rounded-full p-2"><i data-feather="book-open" class="w-5 h-5"></i></div>
-          </div>
-        </div>
-        <div class="bg-secondary-600 rounded-xl p-5 glass">
-          <div class="flex items-start justify-between gap-3">
-            <div>
-              <h3 class="text-xl font-bold">Savitribai Phule Pune University</h3>
-              <p class="text-gray-400">B.E. Computer Engineering • Sept 2021 – May 2024</p>
-              <p class="text-gray-300 mt-2">GPA: 3.56 • Emphasis: Systems & Security.</p>
-            </div>
-            <div class="bg-primary-500/90 rounded-full p-2"><i data-feather="book-open" class="w-5 h-5"></i></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="mt-16">
-      <h2 class="text-2xl font-bold mb-6">Experience</h2>
-      <div class="space-y-4">
-        <div class="bg-secondary-600 rounded-xl p-5">
-          <div class="flex items-start justify-between">
-            <div>
-              <h3 class="text-xl font-bold">Agentic AI Developer</h3>
-              <p class="text-gray-400">Penn State University – Amazon • Jan 2026 – May 2026</p>
-            </div>
-            <div class="bg-primary-500/90 rounded-full p-2"><i data-feather="cpu" class="w-5 h-5"></i></div>
-          </div>
-          <ul class="mt-4 space-y-2 list-disc list-inside text-gray-300">
-            <li>Built an agentic AI red‑teaming framework using Strands SDK, AWS Bedrock, and Python to orchestrate multi‑agent workflows for automated web application security testing, vulnerability discovery, and validation across development environments.</li>
-            <li>Developed Playwright‑ and TypeScript‑based automated testing suites to simulate attacker and benign‑user workflows, improving vulnerability validation, regression detection, and feature correctness by more than 40%.</li>
+      <div class="projects" id="projGrid">
+        <article class="proj feat" data-cat="backend cloud">
+          <div class="kicker"><span>Aug 2025 – Dec 2025</span><span class="star">★ Featured</span></div>
+          <h3>Microservices Shop</h3>
+          <p class="what">Distributed e-commerce backend</p>
+          <ul class="list">
+            <li>Four ASP.NET Core Web API microservices in C# (catalog, basket, discount, ordering) behind an Ocelot API gateway, talking over REST, gRPC and RabbitMQ.</li>
+            <li>A database per service (SQL Server, PostgreSQL, MongoDB, Redis) with CQRS using MediatR and Entity Framework Core.</li>
+            <li>Inbox/outbox pattern and idempotency keys prevent duplicate orders; OpenTelemetry tracing and health checks.</li>
+            <li>GitHub Actions CI builds each service, runs unit tests and builds Docker images.</li>
           </ul>
-        </div>
-        <div class="bg-secondary-600 rounded-xl p-5">
-          <div class="flex items-start justify-between">
-            <div>
-              <h3 class="text-xl font-bold">Teaching Assistant – Cyber 366 & SRA 433</h3>
-              <p class="text-gray-400">Penn State College of IST • Aug 2024 – Present</p>
-            </div>
-            <div class="bg-primary-500/90 rounded-full p-2"><i data-feather="shield" class="w-5 h-5"></i></div>
-          </div>
-          <ul class="mt-4 space-y-2 list-disc list-inside text-gray-300">
-            <li>Delivered malware analysis & reverse engineering labs with Ghidra/IDA Pro; supported C/assembly review.</li>
-            <li>Guided deception theory & counter‑deception techniques; taught analytic methods including trace clustering.</li>
+          <div class="chips"><span class="chip key">ASP.NET Core</span><span class="chip">C#</span><span class="chip">EF Core</span><span class="chip">SQL Server</span><span class="chip">RabbitMQ</span><span class="chip">gRPC</span><span class="chip">Docker</span></div>
+          <div><a class="go" href="https://github.com/tanishkamali14/Microservices-App-dotnet-" target="_blank" rel="noopener">View code →</a></div>
+        </article>
+
+        <article class="proj feat" data-cat="fullstack backend">
+          <div class="kicker"><span>Jan 2025 – May 2025</span><span class="star">★ Featured</span></div>
+          <h3>Task Manager</h3>
+          <p class="what">Full-stack web app</p>
+          <ul class="list">
+            <li>Task management app built with ASP.NET Core MVC (Razor views), Entity Framework Core and SQL Server, supporting task CRUD and scheduling.</li>
+            <li>Designed the relational schema in SQL Server and built the data access layer with Entity Framework Core.</li>
+            <li>Two-factor authentication and SendGrid email notifications; containerized with Docker Compose.</li>
           </ul>
-        </div>
-        <div class="bg-secondary-600 rounded-xl p-5">
-          <div class="flex items-start justify-between">
-            <div>
-              <h3 class="text-xl font-bold">Vulnerability Management Intern</h3>
-              <p class="text-gray-400">Balbird Industries • Jun 2023 – Dec 2023</p>
-            </div>
-            <div class="bg-primary-500/90 rounded-full p-2"><i data-feather="activity" class="w-5 h-5"></i></div>
-          </div>
-          <ul class="mt-4 space-y-2 list-disc list-inside text-gray-300">
-            <li>Ran ERP assessments with Nessus/OpenVAS/OWASP ZAP; fixed DOM‑XSS via input validation & CSP.</li>
-            <li>Built lockout + pilot 2FA; thresholds on failed logins with cooldown; improved auth resilience.</li>
+          <div class="chips"><span class="chip key">ASP.NET Core MVC</span><span class="chip">EF Core</span><span class="chip">SQL Server</span><span class="chip">SendGrid</span><span class="chip">Docker</span></div>
+          <!-- TODO: replace with the Task Manager repo URL -->
+          <div><a class="go" href="https://github.com/tanishkamali14" target="_blank" rel="noopener">View on GitHub →</a></div>
+        </article>
+
+        <article class="proj feat" data-cat="fullstack">
+          <div class="kicker"><span>May 2026 – Present</span><span class="star">★ Featured</span></div>
+          <h3>AgentOps Studio</h3>
+          <p class="what">Developer console for AI agents</p>
+          <ul class="list">
+            <li>React/Next.js and TypeScript frontend with a FastAPI backend for testing and debugging AI agent workflows: SSE streaming, a tool registry and agent trace visualization.</li>
+            <li>Interactive API playground with auto-generated TypeScript and Python snippets and a TypeScript SDK wrapper.</li>
+            <li>Deployed on Vercel with the frontend and FastAPI service decoupled, so each deploys on its own.</li>
           </ul>
-        </div>
-        <div class="bg-secondary-600 rounded-xl p-5">
-          <div class="flex items-start justify-between">
-            <div>
-              <h3 class="text-xl font-bold">Software Developer Intern</h3>
-              <p class="text-gray-400">Keenhour (99 Digital) • Feb 2023 – May 2023</p>
-            </div>
-            <div class="bg-primary-500/90 rounded-full p-2"><i data-feather="cpu" class="w-5 h-5"></i></div>
-          </div>
-          <ul class="mt-4 space-y-2 list-disc list-inside text-gray-300">
-            <li>Boosted load speed 40% via code‑splitting & lazy loading (Webpack/React.lazy).</li>
-            <li>Hardened reliability with Axios retries/backoff; triaged downtime by ELK analysis and caching.</li>
+          <div class="chips"><span class="chip key">React</span><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">FastAPI</span><span class="chip">Vercel</span></div>
+          <!-- TODO: replace with the AgentOps Studio repo or live URL -->
+          <div><a class="go" href="https://github.com/tanishkamali14" target="_blank" rel="noopener">View on GitHub →</a></div>
+        </article>
+
+        <article class="proj feat" data-cat="cloud security">
+          <div class="kicker"><span>Jan 2026 – May 2026</span><span class="star">★ Featured</span></div>
+          <h3>Kubernetes Sentinel Lab</h3>
+          <p class="what">Isolation and observability for containers</p>
+          <ul class="list">
+            <li>Python tool that links Kubernetes audit logs with container runtime alerts, grouping related events into one ranked incident instead of many alerts.</li>
+            <li>9 runtime detection rules (Falco) and 8 admission policies (Kyverno) blocking privileged pods, host mounts and privilege escalation, installed with pinned Helm charts.</li>
+            <li>Full Kind (Kubernetes-in-Docker) cluster tested end to end in GitHub Actions, detecting 8 of 8 attack scenarios.</li>
           </ul>
+          <div class="chips"><span class="chip key">Python</span><span class="chip">Kubernetes</span><span class="chip">Helm</span><span class="chip">Falco</span><span class="chip">Kyverno</span><span class="chip">GitHub Actions</span></div>
+          <!-- TODO: replace with the Kubernetes Sentinel Lab repo URL -->
+          <div><a class="go" href="https://github.com/tanishkamali14" target="_blank" rel="noopener">View on GitHub →</a></div>
+        </article>
+
+        <article class="proj" data-cat="backend security">
+          <div class="kicker"><span>Aug 2025 – Nov 2025</span></div>
+          <h3>Async Web Vulnerability Scanner</h3>
+          <p class="what">Concurrent scanning engine with a REST API</p>
+          <ul class="list">
+            <li>asyncio/httpx engine runs 9 checks in parallel and streams results over WebSockets; FastAPI REST API with PostgreSQL, JWT auth and rate limiting.</li>
+            <li>37 pytest tests; shipped as a GitHub Action with SARIF output. False positives on a test site: 13 → 0.</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">pytest</span></div>
+          <div><a class="go" href="https://github.com/tanishkamali14/owasp-top10-vulnerability-scanner" target="_blank" rel="noopener">View code →</a></div>
+        </article>
+
+        <article class="proj" data-cat="cloud security">
+          <div class="kicker"><span>Aug 2025 – Nov 2025</span></div>
+          <h3>Container Security Pipeline</h3>
+          <p class="what">Supply-chain security on GCP</p>
+          <ul class="list">
+            <li>CI/CD pipeline that signs images with Cloud KMS keys and records attestations through Grafeas attestors.</li>
+            <li>Binary Authorization on GKE allows only KMS-signed images and denies every unsigned one.</li>
+          </ul>
+          <div class="chips"><span class="chip">GCP</span><span class="chip">GKE</span><span class="chip">Cloud KMS</span><span class="chip">CI/CD</span></div>
+          <div><a class="go" href="https://github.com/code-glyph/container-security-pipeline/tree/main" target="_blank" rel="noopener">View code →</a></div>
+        </article>
+
+        <article class="proj" data-cat="security">
+          <div class="kicker"><span>Aug 2025 – Nov 2025</span></div>
+          <h3>AI-Based Intrusion Detection</h3>
+          <p class="what">Hybrid ML detection with a dashboard</p>
+          <ul class="list">
+            <li>Supervised models for known attacks plus anomaly detection for new ones on CIC-IDS2017; Random Forest reached 0.988 precision and recall.</li>
+            <li>Streamlit dashboard to compare models and tune alert thresholds.</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Machine Learning</span><span class="chip">Streamlit</span></div>
+          <div><a class="go" href="https://github.com/tanishkamali14/AI-Based-Network-Intrusion-Detection-System" target="_blank" rel="noopener">View code →</a></div>
+        </article>
+
+        <article class="proj" data-cat="security">
+          <div class="kicker"><span>Machine learning</span></div>
+          <h3>Ransomware Detection</h3>
+          <p class="what">Behavior-based ransomware detection with machine learning.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Machine Learning</span></div>
+          <div><a class="go" href="https://github.com/tanishkamali14/Ransomware-Detection" target="_blank" rel="noopener">View code →</a></div>
+        </article>
+
+        <article class="proj" data-cat="security">
+          <div class="kicker"><span>Published paper</span></div>
+          <h3>CyberProbe</h3>
+          <p class="what">Framework that automates installing, updating and organizing security testing tools.</p>
+          <div class="chips"><span class="chip">Automation</span><span class="chip">Linux</span></div>
+          <div><a class="go" href="https://github.com/tanishkamali14/cyberprobe" target="_blank" rel="noopener">Code →</a><a class="go" href="https://ijsrem.com/download/cyberprobe-a-framework-for-assessing-system-security/" target="_blank" rel="noopener">Paper →</a></div>
+        </article>
+
+        <article class="proj" data-cat="security">
+          <div class="kicker"><span>Threat mapping</span></div>
+          <h3>IoT MITRE Threat Mapping</h3>
+          <p class="what">Engine that maps IoT attacks to MITRE ATT&amp;CK techniques.</p>
+          <div class="chips"><span class="chip">MITRE ATT&amp;CK</span><span class="chip">IoT</span></div>
+          <div><a class="go" href="https://github.com/png270/iot-mitre-threat-mapping" target="_blank" rel="noopener">View code →</a></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Achievements ===== -->
+    <section id="achievements">
+      <div class="sec-head"><h2>Achievements</h2><p>Competitions and awards</p></div>
+      <div class="win">
+        <div class="big">#1</div>
+        <div><h3>Amazon Nova AI Challenge — Overall Winner</h3><p>Led team Lion-0xA to #1 Overall, #1 Benign User Agent and #2 Security Agent in a global competition.</p></div>
+      </div>
+      <div class="awards">
+        <div class="award"><div class="place">1st Place</div><div><h4>Internal Penn State CTF</h4></div></div>
+        <div class="award"><div class="place">2nd Place</div><div><h4>INJ Cyber Competition (2025)</h4><p>Incident response simulation: traced a privilege-escalation attack, rebuilt the timeline and contained it.</p></div></div>
+        <div class="award"><div class="place">2nd Place</div><div><h4>CyberFire, U.S. Department of Energy</h4></div></div>
+        <div class="award"><div class="place">4th of 96</div><div><h4>Deloitte Mountain West Cyber Challenge (2025)</h4><p>With Penn State's CyberLions team.</p></div></div>
+        <div class="award"><div class="place">8th + Best Team Spirit</div><div><h4>Raymond James Intercollegiate CTF (2025)</h4><p>Scripted solvers that automated challenges across 1K+ inputs.</p></div></div>
+        <div class="award"><div class="place">Team Captain</div><div><h4>UND CyberHawks National CTF (2025)</h4></div></div>
+        <div class="award"><div class="place">Report</div><div><h4><a href="https://github.com/tanishkamali14/DASSH-Homeland-Security-Design-Challenge" target="_blank" rel="noopener">DASSH Homeland Security Challenge →</a></h4><p>AI-driven log analysis.</p></div></div>
+        <div class="award"><div class="place">Participant</div><div><h4>iCTF 2024 · CyberSEED 2025 · picoCTF 2025 · CTF@CIT 2025</h4></div></div>
+      </div>
+    </section>
+
+    <!-- ===== Education & Certifications ===== -->
+    <section id="education">
+      <div class="sec-head"><h2>Education &amp; Certifications</h2><p></p></div>
+      <div class="two">
+        <div class="box">
+          <h3>Education</h3>
+          <div class="item"><div class="row"><h4>Penn State University, University Park</h4><span class="when">2024 – 2026</span></div><p>M.S. Information and Systems Security · GPA 3.93</p></div>
+          <!-- CHECK: main resume says Computer Science; the other three resumes say Computer Engineering -->
+          <div class="item"><div class="row"><h4>Savitribai Phule Pune University</h4><span class="when">2021 – 2024</span></div><p>B.E. Computer Engineering · GPA 3.56</p></div>
+        </div>
+        <div class="box">
+          <h3>Certifications</h3>
+          <div class="item"><div class="row"><h4>CompTIA Security+ (SY0-701)</h4><span class="tagx ok">Earned Sept 2025</span></div><p><a href="https://www.credly.com/badges/e33177d6-812c-4baa-b8e0-dfae7228d7ff/linked_in?t=t39k9l" target="_blank" rel="noopener">View badge →</a></p></div>
+          <div class="item"><div class="row"><h4>AWS Solutions Architect – Associate</h4><span class="tagx">In progress</span></div></div>
+          <div class="item"><div class="row"><h4>OSCP (OffSec Certified Professional)</h4><span class="tagx">In progress</span></div></div>
+        </div>
+      </div>
+      <div class="box" style="margin-top:18px">
+        <h3>Writing</h3>
+        <div class="item"><div class="row"><h4>CyberProbe: A Framework for Assessing System Security</h4><span class="when">Journal paper</span></div><p><a href="https://ijsrem.com/download/cyberprobe-a-framework-for-assessing-system-security/" target="_blank" rel="noopener">Read →</a></p></div>
+        <div class="item"><div class="row"><h4>The Quantum Leap: Cybersecurity in the Age of Quantum Computers</h4><span class="when">Blog post</span></div><p><a href="https://medium.com/@tanishkamali14/the-quantum-leap-transformation-of-cybersecurity-in-the-age-of-quantum-computers-f895ba49d5be" target="_blank" rel="noopener">Read →</a></p></div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact">
+      <div class="contact">
+        <div>
+          <h2>Let's work together.</h2>
+          <p>tanishkamali14@gmail.com · +1 (814) 280-6430 · State College, PA</p>
+        </div>
+        <div class="actions">
+          <a class="btn solid" href="mailto:tanishkamali14@gmail.com">Email me</a>
+          <a class="btn" href="https://www.linkedin.com/in/tanishkamali/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/tanishkamali14" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </section>
 
-    <!-- CTFs -->
-    <section id="competitions" class="mt-16">
-      <h2 class="text-2xl font-bold mb-6">Competitions & CTFs</h2>
-      <div class="grid md:grid-cols-2 gap-4">
-        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">Raymond James CTF 2024</h3><p class="text-gray-400">Best Team Spirit • 8th Place</p></div>
-        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">Internal Penn State CTF</h3><p class="text-gray-400">1st Place</p></div>
-        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">CyberFire – U.S. Dept. of Energy</h3><p class="text-gray-400">2nd Place</p></div>
-        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">UND CyberHawks National CTF 2025</h3><p class="text-gray-400">Team Captain</p></div>
-        <!-- Linked card for DASSH Homeland Security Challenge with competition report -->
-        <a href="https://github.com/tanishkamali14/DASSH-Homeland-Security-Design-Challenge" target="_blank" rel="noopener" class="bg-secondary-600 rounded-xl p-5 hover:ring-2 ring-primary-500 block">
-          <h3 class="text-xl font-bold">DASSH Homeland Security Challenge</h3>
-          <p class="text-gray-400">AI‑Driven Log Analysis (competition report)</p>
-        </a>
-        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">Mountain West Cyber Challenge 2024</h3><p class="text-gray-400">4th Place</p></div>
-        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">iCTF – International CTF 2024</h3><p class="text-gray-400">Global Competition</p></div>
-        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">CyberSEED 2025</h3><p class="text-gray-400">Cybersecurity Games by UConn</p></div>
-        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">PicoCTF 2025 – CMU</h3><p class="text-gray-400">Binary, Web, Crypto Challenges</p></div>
-        <div class="bg-secondary-600 rounded-xl p-5"><h3 class="text-xl font-bold">CTF@CIT 2025</h3><p class="text-gray-400">Offensive Security Scenarios</p></div>
-      </div>
-    </section>
-
-    <!-- Certifications -->
-    <section id="certifications" class="mt-16">
-      <h2 class="text-2xl font-bold mb-6">Certifications</h2>
-      <div class="bg-secondary-600 rounded-xl p-5">
-        <!-- CompTIA Security+ certification -->
-        <div class="flex items-center gap-3">
-          <i data-feather="shield" class="w-5 h-5"></i>
-          <span class="font-semibold">CompTIA Security+ (SY0‑701)</span>
-          <a class="text-primary-500 hover:underline text-sm" href="https://www.comptia.org/certifications/security" target="_blank" rel="noopener">About</a>
-          <a class="text-primary-500 hover:underline text-sm" href="https://www.credly.com/badges/e33177d6-812c-4baa-b8e0-dfae7228d7ff/linked_in?t=t39k9l" target="_blank" rel="noopener">Badge</a>
-        </div>
-        <p class="text-gray-300 mt-2">Threats, risk, IR, cryptography, secure architectures, IAM, and compliance frameworks.</p>
-        <!-- AWS Solutions Architect certification -->
-        <div class="flex items-center gap-3 mt-5">
-          <i data-feather="cloud" class="w-5 h-5"></i>
-          <span class="font-semibold">AWS Certified Solutions Architect – Associate (In Progress)</span>
-          <a class="text-primary-500 hover:underline text-sm" href="https://aws.amazon.com/certification/certified-solutions-architect-associate/" target="_blank" rel="noopener">About</a>
-        </div>
-        <p class="text-gray-300 mt-2">Designing resilient, secure, and cost‑optimized architectures on AWS, with emphasis on IAM, networking and compute services.</p>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="mt-16">
-      <h2 class="text-2xl font-bold mb-6">Technical Skills</h2>
-      <div class="grid md:grid-cols-2 gap-4">
-        <ul class="bg-secondary-600 rounded-xl p-5 space-y-2 text-gray-300">
-          <li><strong>Security & Cloud</strong>: Threat detection, threat hunting, incident response & DFIR, vulnerability assessment, application security, secure SDLC, threat modeling, detection engineering, MITRE ATT&CK, OWASP Top 10, IAM, system hardening, NIST SP 800‑53, SSL/TLS. Cloud & container skills include AWS (S3, Bedrock, IAM), GCP (Binary Authorization, KMS, GKE), Docker, Kubernetes, CI/CD and supply‑chain security (Grafeas attestors, image signing).</li>
-          <li><strong>AI Security</strong>: LLMs, Amazon Bedrock, agentic AI, adversarial AI, prompt engineering, model evaluation, anomaly detection.</li>
-        </ul>
-        <ul class="bg-secondary-600 rounded-xl p-5 space-y-2 text-gray-300">
-          <li><strong>Tools</strong>: Splunk, Wazuh, Burp Suite, OpenVAS, Nessus, Wireshark, Ghidra, IDA Pro, Git, Jenkins, Playwright.</li>
-          <li><strong>Programming</strong>: Python, Bash, JavaScript/TypeScript, C/C++, SQL.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Papers & Writing -->
-    <section id="papers" class="mt-16">
-      <h2 class="text-2xl font-bold mb-6">Papers & Writing</h2>
-      <div class="bg-secondary-600 rounded-xl p-5 space-y-3">
-        <p class="text-gray-300">Explore my research &amp; writing:</p>
-        <ul class="list-disc list-inside text-primary-500 text-sm space-y-1">
-          <li><a class="hover:underline" href="https://ijsrem.com/download/cyberprobe-a-framework-for-assessing-system-security/" target="_blank" rel="noopener">CyberProbe: A Framework for Assessing System Security (journal paper)</a></li>
-          <li><a class="hover:underline" href="https://medium.com/@tanishkamali14/the-quantum-leap-transformation-of-cybersecurity-in-the-age-of-quantum-computers-f895ba49d5be" target="_blank" rel="noopener">The Quantum Leap: Transformation of Cybersecurity in the Age of Quantum Computers (blog post)</a></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="mt-16">
-      <h2 class="text-2xl font-bold mb-6">Get in Touch</h2>
-      <div class="bg-secondary-600 rounded-xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div class="space-y-1">
-          <p class="text-lg font-semibold">Tanishka Ganesh Mali</p>
-          <p class="text-gray-300">Graduate Researcher • Security Engineer</p>
-          <!-- Added location and phone details -->
-          <p class="text-gray-300">State College, PA</p>
-          <p class="text-gray-300">+1 (814) 280‑6430</p>
-        </div>
-        <div class="flex flex-wrap gap-3 items-center">
-          <a class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-md" href="mailto:tanishkamali114@gmail.com"><i data-feather="mail" class="w-4 h-4"></i> Email</a>
-          <a class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-md" href="https://www.linkedin.com/in/tanishkamali/" target="_blank" rel="noopener"><i data-feather="linkedin" class="w-4 h-4"></i> LinkedIn</a>
-          <a class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-md" href="https://github.com/tanishkamali14" target="_blank" rel="noopener"><i data-feather="github" class="w-4 h-4"></i> GitHub</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Resume -->
-    <section id="resume" class="mt-16">
-      <h2 class="text-2xl font-bold mb-4">Resume</h2>
-      <p class="text-gray-300">My current resume is available for download below. Use the button to save a copy or view it in the embedded preview.</p>
-      <div class="flex flex-wrap items-center gap-3 mb-6">
-        <a class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 px-5 py-3 rounded-md font-semibold" href="./resume1.pdf" download>
-          <i data-feather="download" class="w-5 h-5"></i> Download Resume
-        </a>
-        <a class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-5 py-3 rounded-md font-semibold" href="https://github.com/tanishkamali14/tanishkamali14.github.io" target="_blank" rel="noopener">
-          <i data-feather="globe" class="w-5 h-5"></i> Site Repo
-        </a>
-      </div>
-      <object data="./resume1.pdf" type="application/pdf" class="w-full h-[70vh] rounded-xl border border-white/10"></object>
+    <!-- ===== Resume ===== -->
+    <section id="resume">
+      <div class="sec-head"><h2>Resume</h2><p><a class="accent" href="./resume1.pdf" download><strong>Download PDF →</strong></a></p></div>
+      <!-- Upload your main resume as resume1.pdf (or change both paths) -->
+      <object class="resume-frame" data="./resume1.pdf" type="application/pdf"> <p style="padding:24px">Your browser can't preview PDFs here. <a class="accent" href="./resume1.pdf">Download the resume</a> instead.</p></object>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="border-t border-white/10 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-gray-400">
-      <p>© <span id="year"></span> Tanishka Mali • CyberFlix</p>
-      <div class="flex items-center gap-4">
-        <button id="themeToggle" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-2 rounded-md"><i data-feather="moon" class="w-4 h-4"></i><span>Theme</span></button>
-        <a href="#top" class="hover:text-white">Back to top</a>
-      </div>
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year"></span> Tanishka Mali</span>
+      <a href="#top">Back to top ↑</a>
     </div>
   </footer>
 
-  <!-- Navbar Component -->
   <script>
-    class CustomNavbar extends HTMLElement {
-      connectedCallback() {
-        this.innerHTML = `
-        <header class="fixed top-0 left-0 right-0 z-50">
-          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="mt-4 flex items-center justify-between rounded-2xl bg-black/40 backdrop-blur border border-white/10 px-4 py-3">
-              <div class="flex items-center gap-3">
-                <div class="h-8 w-8 rounded bg-primary-500 grid place-content-center font-black">C</div>
-                <a href="#" class="text-xl font-black tracking-tight">CyberFlix</a>
-              </div>
-              <nav class="hidden md:flex items-center gap-6 text-sm">
-                <a class="hover:text-white text-gray-300" href="#projects">Projects</a>
-                <a class="hover:text-white text-gray-300" href="#experience">Experience</a>
-                <a class="hover:text-white text-gray-300" href="#education">Education</a>
-                <a class="hover:text-white text-gray-300" href="#competitions">CTFs</a>
-                <a class="hover:text-white text-gray-300" href="#skills">Skills</a>
-                <a class="hover:text-white text-gray-300" href="#contact">Contact</a>
-              </nav>
-              <button id="menuBtn" class="md:hidden inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-2 rounded-md">
-                <i data-feather="menu" class="w-5 h-5"></i>
-              </button>
-            </div>
-          </div>
-          <div id="mobileNav" class="md:hidden hidden mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="mt-2 rounded-2xl bg-black/60 backdrop-blur border border-white/10 px-4 py-3 flex flex-col">
-              <a class="py-2 border-b border-white/10" href="#projects">Projects</a>
-              <a class="py-2 border-b border-white/10" href="#experience">Experience</a>
-              <a class="py-2 border-b border-white/10" href="#education">Education</a>
-              <a class="py-2 border-b border-white/10" href="#competitions">CTFs</a>
-              <a class="py-2 border-b border-white/10" href="#skills">Skills</a>
-              <a class="py-2" href="#contact">Contact</a>
-            </div>
-          </div>
-        </header>`
-      }
-    }
-    customElements.define('custom-navbar', CustomNavbar)
-  </script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  <!-- Page Scripts -->
-  <script>
-    feather.replace()
-    document.getElementById('year').textContent = new Date().getFullYear()
-    const themeBtn = document.getElementById('themeToggle')
-    const root = document.documentElement
-    const stored = localStorage.getItem('theme')
-    if (stored === 'light') root.classList.remove('dark')
-    themeBtn?.addEventListener('click', () => {
-      root.classList.toggle('dark')
-      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light')
-    })
-    const menuBtn = document.getElementById('menuBtn')
-    const mobileNav = document.getElementById('mobileNav')
-    menuBtn?.addEventListener('click', () => mobileNav.classList.toggle('hidden'))
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+
+    // Project filters
+    const buttons = document.querySelectorAll('.filters button');
+    const cards = document.querySelectorAll('#projGrid .proj');
+    buttons.forEach(b => b.addEventListener('click', () => {
+      buttons.forEach(x => x.classList.toggle('on', x === b));
+      const f = b.dataset.f;
+      cards.forEach(c => c.classList.toggle('hide', f !== 'all' && !c.dataset.cat.split(' ').includes(f)));
+    }));
   </script>
 </body>
 </html>
